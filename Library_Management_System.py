@@ -119,7 +119,7 @@ class Library:
         ButtonFrame = Frame(MainFrame, bd=20, width= 1350, height= 50, padx= 20, relief=RIDGE)
         ButtonFrame.pack(side= BOTTOM, fill="both", expand="yes")
 
-        FrameDetail = Frame(MainFrame, bd=20, width= 1350, height= 100, padx= 20, relief=RIDGE, bg= "turquoise")
+        FrameDetail = Frame(MainFrame, bd=20, width= 1350, height= 100, padx= 20, relief=RIDGE)
         FrameDetail.pack(side= BOTTOM, fill="both", expand="yes")
 
         DataFrame = Frame(MainFrame, bd= 20, width= 1350, height= 400, padx= 20, relief= RIDGE)
@@ -236,7 +236,7 @@ class Library:
         self.txtSellingPrice .grid(row=8, column=3)
 
     #____________________________________________WIDGET__________________________________________
-        self.textDisplayR = Text(DataFrameRIGHT, font=('arial', 12, 'bold'), width=32, height= 13, padx= 8, pady= 20, bg= "pink")
+        self.textDisplayR = Text(DataFrameRIGHT, font=('arial', 12, 'bold'), width=32, height= 13, padx= 8, pady= 20)
         self.textDisplayR.grid(row=0, column=2)
     #____________________________________________LISTBOX__________________________________________
         scrollbar = Scrollbar(DataFrameRIGHT)
@@ -534,10 +534,10 @@ class Library:
 
     #____________________________________________________________________________________________
 
-        self.lblLabel = Label(FrameDetail, font=('arial', 12, 'bold'), pady= 8, text=" Member type\t Refernce No.\t Title\t FirstName\t Surname\t Address 1\t Address 2\t Post Code\t Book Title\t Date Borrowed\t Days on Loan", bg= "green")
+        self.lblLabel = Label(FrameDetail, font=('arial', 12, 'bold'), pady= 8, text=" Member type\t Refernce No.\t Title\t FirstName\t Surname\t Address 1\t Address 2\t Post Code\t Book Title\t Date Borrowed\t Days on Loan")
         self.lblLabel.grid(row= 0, column= 0)
 
-        self.textDisplayR1 = Text(FrameDetail, font=('arial', 12, 'bold'), width=160, height= 4, padx= 2, pady= 4, bg= "red")
+        self.textDisplayR1 = Text(FrameDetail, font=('arial', 12, 'bold'), width=160, height= 4, padx= 2, pady= 4)
         self.textDisplayR1.grid(row=1, column=0)
 
     #_____________________________________________BUTTON_________________________________________
