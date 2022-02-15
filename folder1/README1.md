@@ -5,6 +5,7 @@ YT timestamp - 35:50
 - Window is now expandable
 - Dataframe right issue resolved
 - Added books and a scrollbar
+- Scrollbar Ran!!
 
 #### Issues - 
-- Scrollbar doesnt scroll XD
+- 

@@ -1,3 +1,4 @@
+from email.headerregistry import Address
 from email.mime import application
 from tkinter import * 
 from tkinter import ttk
@@ -18,7 +19,63 @@ class Library:
         self.root.geometry("1350x750+0+0")
         self.root.configure(background = "powder blue")
 
+        MType = StringVar()
+        Ref = StringVar()
+        Title = StringVar()
+        Firstname = StringVar()
+        Surname = StringVar()
+        Address1 = StringVar()
+        Address2 = StringVar()
+        Postcode = StringVar()
+        MobileNo = StringVar()
+        BookID = StringVar()
+        BookTitle = StringVar()
+        BookType = StringVar()
+        Author = StringVar()
+        DateBorrowed = StringVar()
+        DateDue = StringVar()
+        SellingPrice = StringVar()
+        LateReturnFine = StringVar()
+        DateOverDue = StringVar()
+        DaysOnLoan = StringVar()
+        Prescription = StringVar()
 
+        def iExit():
+            iExit = tkinter.messagebox.askyesno("Library Management System", "Confirm if you want to exit")
+            if iExit > 0:
+                root.destroy()
+                return 
+
+        def iReset():
+            MType.set("")
+            Ref.set("") 
+            Title.set("") 
+            Firstname.set("") 
+            Surname.set("") 
+            Address1.set("") 
+            Address2.set("") 
+            Postcode.set("") 
+            MobileNo.set("") 
+            BookID.set("") 
+            BookTitle.set("") 
+            BookType.set("") 
+            Author.set("") 
+            DateBorrowed.set("") 
+            DateDue.set("") 
+            SellingPrice.set("") 
+            LateReturnFine.set("") 
+            DateOverDue.set("") 
+            DaysOnLoan.set("")
+            self.FrameDetails.delete("1.0", END) 
+            self.textDisplayR.delete("1.0", END)
+            
+            
+        def iDelete():
+            iReset()
+            self.textDisplayR.delete("1.0", END)
+
+
+        
     #________________________framework___________________________________________
         MainFrame = Frame(self.root)
         MainFrame.grid()
@@ -54,97 +111,97 @@ class Library:
         self.lblMemberType = Label(DataFrameLEFT, font=('arial', 12, 'bold'), text="Member Type:", padx=2, pady=2)
         self.lblMemberType .grid(row=0, column=0, sticky=W)
 
-        self.cboMemberType = ttk.Combobox(DataFrameLEFT, font=('arial', 12, 'bold'),state='readonly', width=23)
+        self.cboMemberType = ttk.Combobox(DataFrameLEFT, font=('arial', 12, 'bold'),state='readonly', textvariable= MType, width=23)
         self.cboMemberType['value']=('','Student','Lecturer','Admin Staff')
         self.cboMemberType.current(0)
         self.cboMemberType .grid(row=0, column=1)
 
         self.lblBookID = Label(DataFrameLEFT, font=('arial', 12, 'bold'), text="Book ID", padx=2, pady=2)
         self.lblBookID.grid(row=1, column=0, sticky=W)
-        self.lblBookID = Entry(DataFrameLEFT, font=('arial', 12, 'bold'),width=25)
+        self.lblBookID = Entry(DataFrameLEFT, font=('arial', 12, 'bold'),width=25, textvariable= BookID)
         self.lblBookID.grid(row=1, column=1)
 
         self.lblRef =Label(DataFrameLEFT, font=('arial', 12, 'bold'), text="Reference no:",padx=2,pady=2)
         self.lblRef.grid(row=1,column=0,sticky=W)
-        self.txtRef=Entry(DataFrameLEFT, font=('arial',12,'bold'), width=25)
+        self.txtRef=Entry(DataFrameLEFT, font=('arial',12,'bold'), width=25, textvariable= Ref)
         self.txtRef.grid(row=1, column=1)
 
         self.lblBookTitle = Label(DataFrameLEFT, font=('arial', 12, 'bold'), text="Book Title:", padx=2, pady=2)
         self.lblBookTitle.grid(row=1, column=2, sticky=W)
-        self.txtBookTitle = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25)
+        self.txtBookTitle = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25, textvariable= BookTitle)
         self.txtBookTitle.grid(row=1, column=3)
 
         self.lblTitle=Label(DataFrameLEFT,font=('arial',12,'bold'),text="Title:", padx=2,pady=2)
         self.lblTitle.grid(row=2, column=0, sticky=W)
 
-        self.cboTitle=ttk.Combobox(DataFrameLEFT, font=('arial', 12, 'bold'),state='readonly',width=23)
+        self.cboTitle=ttk.Combobox(DataFrameLEFT, font=('arial', 12, 'bold'),state='readonly',width=23, textvariable= Title)
         self.cboTitle['value']=('','Mr',',Miss','Mrs','Dr','Capt','Ms')
         self.cboTitle.current(0)
         self.cboTitle.grid(row=2,column=1)
 
         self.lblAuthor = Label(DataFrameLEFT, font=('arial', 12, 'bold'), text="Author:", padx=2, pady=2)
         self.lblAuthor.grid(row=2, column=2, sticky=W)
-        self.txtAuthor = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25)
+        self.txtAuthor = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25, textvariable= Author)
         self.txtAuthor.grid(row=2, column=3)
 
         self.lblFirstName= Label(DataFrameLEFT, font=('arial', 12, 'bold'), text="First name:", padx=2, pady=2)
         self.lblFirstName.grid(row=3, column=0, sticky=W)
-        self.txtFirstName= Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25)
+        self.txtFirstName= Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25,textvariable= Firstname)
         self.txtFirstName.grid(row=3, column=1)
 
         self.lblDateBorrowed = Label(DataFrameLEFT, font=('arial', 12, 'bold'), text="Date borrowed:", padx=2, pady=2)
         self.lblDateBorrowed.grid(row=3, column=2, sticky=W)
-        self.txtDateBorrowed = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25)
+        self.txtDateBorrowed = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25, textvariable= DateBorrowed)
         self.txtDateBorrowed.grid(row=3, column=3)
 
         self.lblSurname = Label(DataFrameLEFT, font=('arial', 12, 'bold'), text="Surname:", padx=2, pady=2)
         self.lblSurname.grid(row=4, column=0, sticky=W)
-        self.txtSurname = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25)
+        self.txtSurname = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25, textvariable= Surname)
         self.txtSurname.grid(row=4, column=1)
 
         self.lblDateDue = Label(DataFrameLEFT, font=('arial', 12, 'bold'), text="Date due:", padx=2, pady=2)
         self.lblDateDue.grid(row=4, column=2, sticky=W)
-        self.txtDateDue = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25)
+        self.txtDateDue = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25, textvariable= DateDue)
         self.txtDateDue.grid(row=4, column=3)
 
         self.lblAddress1 = Label(DataFrameLEFT, font=('arial', 12, 'bold'), text="Address 1:", padx=2, pady=2)
         self.lblAddress1.grid(row=5, column=0, sticky=W)
-        self.txtAddress1 = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25)
+        self.txtAddress1 = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25, textvariable= Address1)
         self.txtAddress1.grid(row=5, column=1)
 
         self.lblDaysOnLoan = Label(DataFrameLEFT, font=('arial', 12, 'bold'), text="Days on loan:", padx=2, pady=2)
         self.lblDaysOnLoan .grid(row=5, column=2, sticky=W)
-        self.txtDaysOnLoan  = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25)
+        self.txtDaysOnLoan  = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25, textvariable= DaysOnLoan)
         self.txtDaysOnLoan .grid(row=5, column=3)
 
         self.lblAddress2 = Label(DataFrameLEFT, font=('arial', 12, 'bold'), text="Address 2:", padx=2, pady=2)
         self.lblAddress2.grid(row=6, column=0, sticky=W)
-        self.txtAddress2 = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25)
+        self.txtAddress2 = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25, textvariable= Address2)
         self.txtAddress2.grid(row=6, column=1)
 
         self.lblLateReturnFine= Label(DataFrameLEFT, font=('arial', 12, 'bold'), text="Late Return Fine:", padx=2, pady=2)
         self.lblLateReturnFine.grid(row=6, column=2, sticky=W)
-        self.txtLateReturnFine = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25)
+        self.txtLateReturnFine = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25, textvariable= LateReturnFine)
         self.txtLateReturnFine.grid(row=6, column=3)
 
         self.lblPostCode = Label(DataFrameLEFT, font=('arial', 12, 'bold'), text="Post code:", padx=2,pady=2)
         self.lblPostCode.grid(row=7, column=0, sticky=W)
-        self.txtPostCode = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25)
+        self.txtPostCode = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25, textvariable= Postcode)
         self.txtPostCode.grid(row=7, column=1)
 
         self.lblDateOverDue = Label(DataFrameLEFT, font=('arial', 12, 'bold'), text="Date overdue:", padx=2, pady=2)
         self.lblDateOverDue.grid(row=7, column=2, sticky=W)
-        self.txtDateOverDue = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25)
+        self.txtDateOverDue = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25, textvariable= DateOverDue)
         self.txtDateOverDue.grid(row=7, column=3)
 
         self.lblMobileno = Label(DataFrameLEFT, font=('arial', 12, 'bold'), text="mobie no:", padx=2, pady=2)
         self.lblMobileno.grid(row=8, column=0, sticky=W)
-        self.txtMobileno = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25)
+        self.txtMobileno = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25, textvariable= MobileNo)
         self.txtMobileno.grid(row=8, column=1)
 
         self.lblSellingPrice = Label(DataFrameLEFT, font=('arial', 12, 'bold'), text="Selling Price:", padx=2, pady=2)
         self.lblSellingPrice .grid(row=8, column=2, sticky=W)
-        self.txtSellingPrice  = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25)
+        self.txtSellingPrice  = Entry(DataFrameLEFT, font=('arial', 12, 'bold'), width=25, textvariable= SellingPrice)
         self.txtSellingPrice .grid(row=8, column=3)
 
     #____________________________________________WIDGET__________________________________________
@@ -167,21 +224,26 @@ class Library:
         for items in ListofBooks:
             booklist.insert(END, items)
 
-        
+    #____________________________________________________________________________________________
 
+        self.lblLabel = Label(FrameDetail, font=('arial', 12, 'bold'), pady= 8, text=" Member type\t Refernce No.\t Title\t FirstName\t Surname\t Address 1\t Address 2\t Post Code\t Book Title\t Date Borrowed\t Days on Loan")
+        self.lblLabel.grid(row= 0, column= 0)
+
+        self.textDisplayR = Text(FrameDetail, font=('arial', 12, 'bold'), width=160, height= 4, padx= 2, pady= 4)
+        self.textDisplayR.grid(row=1, column=0)
 
     #_____________________________________________BUTTON_________________________________________
 
         self.btnDisplayData=Button(ButtonFrame, text='Display Data',font=('arial',12,'bold'), width=30, bd=4)
         self.btnDisplayData.grid(row=0,column=0)
 
-        self.btnDelete = Button(ButtonFrame, text='Delete', font=('arial', 12, 'bold'), width=30, bd=4)
+        self.btnDelete = Button(ButtonFrame, text='Delete', font=('arial', 12, 'bold'), width=30, bd=4, command= iDelete)
         self.btnDelete.grid(row=0, column=1)
 
-        self.btnReset = Button(ButtonFrame, text='Reset', font=('arial', 12, 'bold'), width=30, bd=4)
+        self.btnReset = Button(ButtonFrame, text='Reset', font=('arial', 12, 'bold'), width=30, bd=4, command= iReset)
         self.btnReset.grid(row=0, column=2)
 
-        self.btnExit = Button(ButtonFrame, text='Exit', font=('arial', 12, 'bold'), width=30, bd=4)
+        self.btnExit = Button(ButtonFrame, text='Exit', font=('arial', 12, 'bold'), width=30, bd=4, command= iExit)
         self.btnExit.grid(row=0, column=3)
 
 
