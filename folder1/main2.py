@@ -66,7 +66,7 @@ class Library:
             LateReturnFine.set("") 
             DateOverDue.set("") 
             DaysOnLoan.set("")
-            self.FrameDetails.delete("1.0", END) 
+            self.txtFrameDetails.delete("1.0", END) 
             self.textDisplayR.delete("1.0", END)
             
             
@@ -74,7 +74,38 @@ class Library:
             iReset()
             self.textDisplayR.delete("1.0", END)
 
+        def iDisplayData():
+            self.textDisplayR1.insert(END, 'Member Type: \t\t' + MType.get() + "\n")
+            self.textDisplayR1.insert(END, 'Ref No: \t\t' + Ref.get() + "\n")
+            self.textDisplayR1.insert(END, 'Title: \t\t' + Title.get() + "\n")
+            self.textDisplayR1.insert(END, 'Firstname: \t\t' + Firstname.get() + "\n")
+            self.textDisplayR1.insert(END, 'Surname: \t\t' + Surname.get() + "\n")
+            self.textDisplayR1.insert(END, 'Address 1: \t\t' + Address1.get() + "\n")
+            self.textDisplayR1.insert(END, 'Address 2: \t\t' + Address2.get() + "\n")
+            self.textDisplayR1.insert(END, 'Post code: \t\t' + Postcode.get() + "\n")
+            self.textDisplayR1.insert(END, 'Mobile no: \t\t' + MobileNo.get() + "\n")
+            self.textDisplayR1.insert(END,'Book ID: \t\t' + BookID.get() + "\n")
+            self.textDisplayR1.insert(END, 'Book Title: \t\t' + BookTitle.get() + "\n")
+            self.textDisplayR1.insert(END, 'Author: \t\t' + Author.get() + "\n")
+            self.textDisplayR1.insert(END, 'Date Borrowed: \t\t' + DateBorrowed.get() + "\n")
+            # self.textDisplayR1.insert(END,"\n",MType.get()+"\n"+Ref.get()+"\n"+Title.get()+"\n"+
+            # Firstname.get()+"\n"+Surname.get()+"\n"+Address1.get()+"\n"+Address2.get()+"\n"+
+            # Postcode.get()+"\n"+BookTitle.get()+"\n"+DateBorrowed.get()+"\n"+DaysOnLoan.get()+"\n")
 
+        def iReciept():
+            self.textDisplayR.insert(END, 'Member Type: \t\t' + MType.get() + "\n")
+            self.textDisplayR.insert(END, 'Ref No: \t\t' + Ref.get() + "\n")
+            self.textDisplayR.insert(END, 'Title: \t\t' + Title.get() + "\n")
+            self.textDisplayR.insert(END, 'Firstname: \t\t' + Firstname.get() + "\n")
+            self.textDisplayR.insert(END, 'Surname: \t\t' + Surname.get() + "\n")
+            self.textDisplayR.insert(END, 'Address 1: \t\t' + Address1.get() + "\n")
+            self.textDisplayR.insert(END, 'Address 2: \t\t' + Address2.get() + "\n")
+            self.textDisplayR.insert(END, 'Post code: \t\t' + Postcode.get() + "\n")
+            self.textDisplayR.insert(END, 'Mobile no: \t\t' + MobileNo.get() + "\n")
+            self.textDisplayR.insert(END,'Book ID: \t\t' + BookID.get() + "\n")
+            self.textDisplayR.insert(END, 'Book Title: \t\t' + BookTitle.get() + "\n")
+            self.textDisplayR.insert(END, 'Author: \t\t' + Author.get() + "\n")
+            self.textDisplayR.insert(END, 'Date Borrowed: \t\t' + DateBorrowed.get() + "\n")
         
     #________________________framework___________________________________________
         MainFrame = Frame(self.root)
@@ -88,7 +119,7 @@ class Library:
         ButtonFrame = Frame(MainFrame, bd=20, width= 1350, height= 50, padx= 20, relief=RIDGE)
         ButtonFrame.pack(side= BOTTOM, fill="both", expand="yes")
 
-        FrameDetail = Frame(MainFrame, bd=20, width= 1350, height= 100, padx= 20, relief=RIDGE)
+        FrameDetail = Frame(MainFrame, bd=20, width= 1350, height= 100, padx= 20, relief=RIDGE, bg= "turquoise")
         FrameDetail.pack(side= BOTTOM, fill="both", expand="yes")
 
         DataFrame = Frame(MainFrame, bd= 20, width= 1350, height= 400, padx= 20, relief= RIDGE)
@@ -205,7 +236,7 @@ class Library:
         self.txtSellingPrice .grid(row=8, column=3)
 
     #____________________________________________WIDGET__________________________________________
-        self.textDisplayR = Text(DataFrameRIGHT, font=('arial', 12, 'bold'), width=32, height= 13, padx= 8, pady= 20)
+        self.textDisplayR = Text(DataFrameRIGHT, font=('arial', 12, 'bold'), width=32, height= 13, padx= 8, pady= 20, bg= "pink")
         self.textDisplayR.grid(row=0, column=2)
     #____________________________________________LISTBOX__________________________________________
         scrollbar = Scrollbar(DataFrameRIGHT)
@@ -214,9 +245,286 @@ class Library:
 
         ListofBooks = ["Book 1", "Book 2", "Book 3", "Book 4", "Book 5", "Book 6", "Book 7","Book 8", "Book 9", "Book 10", "Book 11", "Book 12", "Book 13", "Book 14", "Book 15", "Book 16"]
 
+        def SelectedBook(evt):
+            value = str(booklist.get(booklist.curselection()))
+            w = value 
+
+            if (w == "Book 1"):
+                BookID.set("ISBN 89273902")
+                BookTitle.set("Book 1")
+                Author.set("xyz")
+                LateReturnFine.set("2.53")
+                SellingPrice.set("253")
+                DaysOnLoan.set(14)
+                iReciept()
+
+
+                import datetime
+                d1=datetime.date.today()
+                d2=datetime.timedelta(days=14)
+                d3=(d1+d2)
+                DateBorrowed.set(d1)
+                DateDue.set(d3)
+                DateOverDue.set("No")
+
+            elif(w=="Book 2"):
+                BookID.set("ISBN 263821")
+                BookTitle.set("Book 2")
+                Author.set("ABSG")
+                LateReturnFine.set("1.22")
+                SellingPrice.set("566")
+                DaysOnLoan.set(7)
+                iReciept()
+
+                import datetime
+                d1 = datetime.date.today()
+                d2 = datetime.timedelta(days=7)
+                d3 = (d1 + d2)
+                DateBorrowed.set(d1)
+                DateDue.set(d3)
+                DateOverDue.set("No")
+
+            elif(w=="Book 3"):
+                BookID.set("ISBN 263821")
+                BookTitle.set("Book 3")
+                Author.set("ABSG")
+                LateReturnFine.set("1.22")
+                SellingPrice.set("566")
+                DaysOnLoan.set(7)
+                iReciept()
+
+                import datetime
+                d1 = datetime.date.today()
+                d2 = datetime.timedelta(days=7)
+                d3 = (d1 + d2)
+                DateBorrowed.set(d1)
+                DateDue.set(d3)
+                DateOverDue.set("No")
+            
+            elif(w=="Book 4"):
+                BookID.set("ISBN 263821")
+                BookTitle.set("Book 4")
+                Author.set("ABSG")
+                LateReturnFine.set("1.22")
+                SellingPrice.set("566")
+                DaysOnLoan.set(7)
+                iReciept()
+
+                import datetime
+                d1 = datetime.date.today()
+                d2 = datetime.timedelta(days=7)
+                d3 = (d1 + d2)
+                DateBorrowed.set(d1)
+                DateDue.set(d3)
+                DateOverDue.set("No")
+
+            elif(w=="Book 5"):
+                BookID.set("ISBN 263821")
+                BookTitle.set("Book 5")
+                Author.set("ABSG")
+                LateReturnFine.set("1.22")
+                SellingPrice.set("566")
+                DaysOnLoan.set(7)
+                iReciept()
+
+                import datetime
+                d1 = datetime.date.today()
+                d2 = datetime.timedelta(days=7)
+                d3 = (d1 + d2)
+                DateBorrowed.set(d1)
+                DateDue.set(d3)
+                DateOverDue.set("No")
+
+            elif(w=="Book 6"):
+                BookID.set("ISBN 263821")
+                BookTitle.set("Book 6")
+                Author.set("ABSG")
+                LateReturnFine.set("1.22")
+                SellingPrice.set("566")
+                DaysOnLoan.set(7)
+                iReciept()
+
+                import datetime
+                d1 = datetime.date.today()
+                d2 = datetime.timedelta(days=7)
+                d3 = (d1 + d2)
+                DateBorrowed.set(d1)
+                DateDue.set(d3)
+                DateOverDue.set("No")
+            
+            elif(w=="Book 7"):
+                BookID.set("ISBN 263821")
+                BookTitle.set("Book 7")
+                Author.set("ABSG")
+                LateReturnFine.set("1.22")
+                SellingPrice.set("566")
+                DaysOnLoan.set(7)
+                iReciept()
+
+                import datetime
+                d1 = datetime.date.today()
+                d2 = datetime.timedelta(days=7)
+                d3 = (d1 + d2)
+                DateBorrowed.set(d1)
+                DateDue.set(d3)
+                DateOverDue.set("No")
+
+            elif(w=="Book 8"):
+                BookID.set("ISBN 263821")
+                BookTitle.set("Book 8")
+                Author.set("ABSG")
+                LateReturnFine.set("1.22")
+                SellingPrice.set("566")
+                DaysOnLoan.set(7)
+                iReciept()
+
+                import datetime
+                d1 = datetime.date.today()
+                d2 = datetime.timedelta(days=7)
+                d3 = (d1 + d2)
+                DateBorrowed.set(d1)
+                DateDue.set(d3)
+                DateOverDue.set("No")
+
+            elif(w=="Book 9"):
+                BookID.set("ISBN 263821")
+                BookTitle.set("Book 9")
+                Author.set("ABSG")
+                LateReturnFine.set("1.22")
+                SellingPrice.set("566")
+                DaysOnLoan.set(7)
+                iReciept()
+
+                import datetime
+                d1 = datetime.date.today()
+                d2 = datetime.timedelta(days=7)
+                d3 = (d1 + d2)
+                DateBorrowed.set(d1)
+                DateDue.set(d3)
+                DateOverDue.set("No")
+
+            elif(w=="Book 10"):
+                BookID.set("ISBN 263821")
+                BookTitle.set("Book 10")
+                Author.set("ABSG")
+                LateReturnFine.set("1.22")
+                SellingPrice.set("566")
+                DaysOnLoan.set(7)
+                iReciept()
+
+                import datetime
+                d1 = datetime.date.today()
+                d2 = datetime.timedelta(days=7)
+                d3 = (d1 + d2)
+                DateBorrowed.set(d1)
+                DateDue.set(d3)
+                DateOverDue.set("No")
+            
+            elif(w=="Book 11"):
+                BookID.set("ISBN 263821")
+                BookTitle.set("Book 11")
+                Author.set("ABSG")
+                LateReturnFine.set("1.22")
+                SellingPrice.set("566")
+                DaysOnLoan.set(7)
+                iReciept()
+
+                import datetime
+                d1 = datetime.date.today()
+                d2 = datetime.timedelta(days=7)
+                d3 = (d1 + d2)
+                DateBorrowed.set(d1)
+                DateDue.set(d3)
+                DateOverDue.set("No")
+
+            elif(w=="Book 12"):
+                BookID.set("ISBN 263821")
+                BookTitle.set("Book 12")
+                Author.set("ABSG")
+                LateReturnFine.set("1.22")
+                SellingPrice.set("566")
+                DaysOnLoan.set(7)
+                iReciept()
+
+                import datetime
+                d1 = datetime.date.today()
+                d2 = datetime.timedelta(days=7)
+                d3 = (d1 + d2)
+                DateBorrowed.set(d1)
+                DateDue.set(d3)
+                DateOverDue.set("No")
+
+            elif(w=="Book 13"):
+                BookID.set("ISBN 263821")
+                BookTitle.set("Book 13")
+                Author.set("ABSG")
+                LateReturnFine.set("1.22")
+                SellingPrice.set("566")
+                DaysOnLoan.set(7)
+                iReciept()
+
+                import datetime
+                d1 = datetime.date.today()
+                d2 = datetime.timedelta(days=7)
+                d3 = (d1 + d2)
+                DateBorrowed.set(d1)
+                DateDue.set(d3)
+                DateOverDue.set("No")
+            
+            elif(w=="Book 14"):
+                BookID.set("ISBN 263821")
+                BookTitle.set("Book 14")
+                Author.set("ABSG")
+                LateReturnFine.set("1.22")
+                SellingPrice.set("566")
+                DaysOnLoan.set(7)
+                iReciept()
+
+                import datetime
+                d1 = datetime.date.today()
+                d2 = datetime.timedelta(days=7)
+                d3 = (d1 + d2)
+                DateBorrowed.set(d1)
+                DateDue.set(d3)
+                DateOverDue.set("No")
+
+            elif(w=="Book 15"):
+                BookID.set("ISBN 263821")
+                BookTitle.set("Book 15")
+                Author.set("ABSG")
+                LateReturnFine.set("1.22")
+                SellingPrice.set("566")
+                DaysOnLoan.set(7)
+                iReciept()
+
+                import datetime
+                d1 = datetime.date.today()
+                d2 = datetime.timedelta(days=7)
+                d3 = (d1 + d2)
+                DateBorrowed.set(d1)
+                DateDue.set(d3)
+                DateOverDue.set("No")
+
+            elif(w == "Book 16"):
+                BookID.set("ISBN 263821")
+                BookTitle.set("Book 16")
+                Author.set("ABSG")
+                LateReturnFine.set("1.22")
+                SellingPrice.set("566")
+                DaysOnLoan.set(7)
+                iReciept()
+
+                import datetime
+                d1 = datetime.date.today()
+                d2 = datetime.timedelta(days=7)
+                d3 = (d1 + d2)
+                DateBorrowed.set(d1)
+                DateDue.set(d3)
+                DateOverDue.set("No")
+
         booklist = Listbox(DataFrameRIGHT, width= 20, height= 12, font=('arial', 12, 'bold'))
 
-        booklist.bind('<<ListboxSelect>>')
+        booklist.bind('<<ListboxSelect>>', SelectedBook)
         booklist.grid(row=0, column=0, padx= 8) 
         scrollbar.config( command= booklist.yview)
         
@@ -226,15 +534,15 @@ class Library:
 
     #____________________________________________________________________________________________
 
-        self.lblLabel = Label(FrameDetail, font=('arial', 12, 'bold'), pady= 8, text=" Member type\t Refernce No.\t Title\t FirstName\t Surname\t Address 1\t Address 2\t Post Code\t Book Title\t Date Borrowed\t Days on Loan")
+        self.lblLabel = Label(FrameDetail, font=('arial', 12, 'bold'), pady= 8, text=" Member type\t Refernce No.\t Title\t FirstName\t Surname\t Address 1\t Address 2\t Post Code\t Book Title\t Date Borrowed\t Days on Loan", bg= "green")
         self.lblLabel.grid(row= 0, column= 0)
 
-        self.textDisplayR = Text(FrameDetail, font=('arial', 12, 'bold'), width=160, height= 4, padx= 2, pady= 4)
-        self.textDisplayR.grid(row=1, column=0)
+        self.textDisplayR1 = Text(FrameDetail, font=('arial', 12, 'bold'), width=160, height= 4, padx= 2, pady= 4, bg= "red")
+        self.textDisplayR1.grid(row=1, column=0)
 
     #_____________________________________________BUTTON_________________________________________
 
-        self.btnDisplayData=Button(ButtonFrame, text='Display Data',font=('arial',12,'bold'), width=30, bd=4)
+        self.btnDisplayData=Button(ButtonFrame, text='Display Data',font=('arial',12,'bold'), width=30, bd=4, command= iDisplayData)
         self.btnDisplayData.grid(row=0,column=0)
 
         self.btnDelete = Button(ButtonFrame, text='Delete', font=('arial', 12, 'bold'), width=30, bd=4, command= iDelete)
