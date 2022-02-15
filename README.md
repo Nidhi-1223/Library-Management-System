@@ -1,12 +1,12 @@
 # Library-Management-System
 Project of Library Management System in Python using tkinter for _Learn for Cause_ hackathon by _Women Of Code_
 
-##Installations
+### Installations
 ``` 
 pip install python-tk
 
 ```
 
-##Technologies Used 
+### Technologies Used 
 * Python
 * tkinter for frontend
