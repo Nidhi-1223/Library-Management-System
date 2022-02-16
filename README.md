@@ -18,3 +18,8 @@ pip install python-tk
 ### Technologies Used 
 * Python
 * tkinter for frontend
+
+### Screenshots
+![Screenshot 1](Images/Scrrenshot_1.png)
+![Screenshot 2](Images/Screenshot_2.png)
+![Screenshot 3](Images/Screenshot_3.png)
