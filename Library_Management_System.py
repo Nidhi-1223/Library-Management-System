@@ -251,8 +251,8 @@ class Library:
 
             if (w == "Book 1"):
                 BookID.set("ISBN 89273902")
-                BookTitle.set("Book 1")
-                Author.set("xyz")
+                BookTitle.set("Harry Potter")
+                Author.set("J. K. Rowling")
                 LateReturnFine.set("2.53")
                 SellingPrice.set("253")
                 DaysOnLoan.set(14)
